@@ -8,12 +8,8 @@ const config = {
         model: process.env.AZURE_OPENAI_MODEL || 'GTP-4o',
     },
     db:{
-       host: process.env.MSSQL_HOST || 'localhost',
-       port: process.env.MSSQL_PORT ? parseInt(process.env.MSSQL_PORT, 10) : undefined,
-       username: process.env.MSSQL_USER || null,
-       password: process.env.MSSQL_PASSWORD || null,
-       database: process.env.MSSQL_DATABASE || 'az_openai_memory',
-       instanceName: process.env.MSSQL_INSTANCE_NAME
+       dialect: 'sqlite',
+       storage: process.env.SQLITE_STORAGE || './data/memory.sqlite',
     },
     behavior: {
         shortMemorySize: parseInt(process.env.SHORT_MEMORY_SIZE || '8', 10),
