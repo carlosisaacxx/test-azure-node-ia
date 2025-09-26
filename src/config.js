@@ -4,16 +4,17 @@ dotenv.config();
 const config = {
     azure: {
         endpoint: process.env.AZURE_OPENAI_ENDPOINT,
-        apiKey: process.env.AZURE_OPENAI_APIKEY,
+        // CORRECCIÓN: Usamos AZURE_OPENAI_APIKEY
+        apiKey: process.env.AZURE_OPENAI_APIKEY, 
         model: process.env.AZURE_OPENAI_MODEL || 'GTP-4o',
     },
     db:{
-       dialect: 'sqlite',
-       storage: process.env.SQLITE_STORAGE || './data/memory.sqlite',
+       dialect: 'sqlite', 
+       storage: process.env.SQLITE_STORAGE || './data/memory.sqlite', 
     },
     behavior: {
         shortMemorySize: parseInt(process.env.SHORT_MEMORY_SIZE || '8', 10),
-        temperature: parseInt(process.env.MODEL_TEMPERATURE || '7'),
+        temperature: parseFloat(process.env.MODEL_TEMPERATURE || '0.7'), // Usar parseFloat
         maxTokens: parseInt(process.env.MODEL_MAX_TOKENS || '1000', 10),
         timeoutMs: parseInt(process.env.REQUEST_TIMEOUT_MS  || '20000', 10),
     }
